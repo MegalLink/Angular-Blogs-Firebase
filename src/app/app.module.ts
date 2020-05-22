@@ -23,6 +23,8 @@ import { AuthService } from './services/auth.service';
 import { PostsComponent } from './components/posts/posts.component';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database-deprecated';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 var firebaseConfig = {
     apiKey: "AIzaSyDfBZbPqlhR9jAgEDUqMlFQHUAbXn67UjY",
     authDomain: "blog-app-73342.firebaseapp.com",
@@ -36,7 +38,7 @@ var firebaseConfig = {
 //INSTALAR ANGULAR V 5.4.2 @angular/fire@5.4.2
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig)],
+  imports:      [ BrowserModule, FormsModule ,AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireDatabaseModule,AngularFireAuthModule],
   declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent],
   bootstrap:    [ AppComponent ],
   providers: [DataApiService, AuthService]
