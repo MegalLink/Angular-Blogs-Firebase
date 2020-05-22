@@ -9,14 +9,21 @@ export class AuthService {
   registerUser(){
          
   }
-  loginEmailUser(){
+  
+  loginEmailUser(email:string,password:string){
+    return new Promise((resolve,reject)=>{
+      this.afauth.auth.signInWithEmailAndPassword(email,password)
+      .then(user=>{
+        return resolve(user),err=>reject(err);
+      })
+    })
 
   }
   loginGoogleUser(){
     return this.afauth.auth.signInWithPopup(new auth.GoogleAuthProvider);
   }
   logoutUser(){
-    this.afauth.auth.signOut;
+   return this.afauth.auth.signOut;
   }
   isAuth(){
     return this.afauth.authState.pipe(map(auth=>auth))

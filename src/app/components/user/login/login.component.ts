@@ -8,16 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+public email:string="";
+public password:string="";
   constructor(private authS:AuthService,private router:Router) { }
 
   ngOnInit() {
   }
- 
+onLogin(){
+   this.authS.loginEmailUser(this.email,this.password).then(res=>{
+    this.onRedirect('/admin/list-posts')
+   }).catch(err=>console.error(err.message))
+ }
  onLoginGoogle(){
    this.authS.loginGoogleUser().then((res)=>{
-     console.log("Lgeado",res)
-     this.router.navigate(['/admin/list-posts'])
-   }).catch(err=>{console.log("ERROR",err)})
+    
+     this.onRedirect('/admin/list-posts')
+   }).catch(err=>{console.error("ERROR",err.message)})
  }
+
+  onRedirect(ruta:string){
+    this.router.navigate([ruta])
+  }
+
 }

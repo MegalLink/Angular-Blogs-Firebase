@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authS.isAuth().subscribe(user=>{
-      console.log(user)
+      
       if(user){
  this.isLogged=true;
       }else{
