@@ -16,14 +16,17 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { PostComponent } from './components/post/post.component';
+
 import { DataApiService } from './services/data-api.service';
 import { AuthService } from './services/auth.service';
-import { PostComponent } from './components/post/post.component';
+import { PostsComponent } from './components/posts/posts.component';
+
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,AppRoutingModule,],
-  declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent],
+  declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent],
   bootstrap:    [ AppComponent ],
   providers: [DataApiService, AuthService]
 })
