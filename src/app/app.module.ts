@@ -21,11 +21,22 @@ import { PostComponent } from './components/post/post.component';
 import { DataApiService } from './services/data-api.service';
 import { AuthService } from './services/auth.service';
 import { PostsComponent } from './components/posts/posts.component';
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+var firebaseConfig = {
+    apiKey: "AIzaSyDfBZbPqlhR9jAgEDUqMlFQHUAbXn67UjY",
+    authDomain: "blog-app-73342.firebaseapp.com",
+    databaseURL: "https://blog-app-73342.firebaseio.com",
+    projectId: "blog-app-73342",
+    storageBucket: "blog-app-73342.appspot.com",
+    messagingSenderId: "622618270021",
+    appId: "1:622618270021:web:6f966c00d507016712462c"
+  };
 
-
+//INSTALAR ANGULAR V 5.4.2 @angular/fire@5.4.2
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ,AppRoutingModule,],
+  imports:      [ BrowserModule, FormsModule ,AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig)],
   declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent],
   bootstrap:    [ AppComponent ],
   providers: [DataApiService, AuthService]
