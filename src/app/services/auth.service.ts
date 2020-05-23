@@ -6,8 +6,12 @@ import {map} from 'rxjs/operators';
 export class AuthService {
 
   constructor(private afauth:AngularFireAuth) { }
-  registerUser(){
-         
+  registerUser(email:string,password:string){
+         return new Promise((resolve,reject)=>{
+           this.afauth.auth.createUserWithEmailAndPassword(email,password).then(user=>{
+             return resolve(user),err=>reject(err);
+           })
+         })
   }
   
   loginEmailUser(email:string,password:string){
