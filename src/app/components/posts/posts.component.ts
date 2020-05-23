@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataApiService } from '../../services/data-api.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private dataS:DataApiService) { }
+  
   ngOnInit() {
+    this.dataS.getAllPosts().subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }

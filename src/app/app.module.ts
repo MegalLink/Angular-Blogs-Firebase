@@ -27,6 +27,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database-deprecated';
 import { AngularFireAuthModule } from '@angular/fire/auth';//login
 import { AngularFireStorageModule } from '@angular/fire/storage';//archivos
 
+// crear las collections
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 
 var firebaseConfig = {
@@ -45,6 +48,6 @@ var firebaseConfig = {
   imports:      [ BrowserModule, FormsModule ,AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireDatabaseModule,AngularFireAuthModule,AngularFireStorageModule],
   declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent],
   bootstrap:    [ AppComponent ],
-  providers: [DataApiService, AuthService]
+  providers: [DataApiService, AuthService,AngularFirestore]
 })
 export class AppModule { }
