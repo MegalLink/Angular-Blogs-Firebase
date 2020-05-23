@@ -1,13 +1,11 @@
 <section id="profile" class="container">
-  <div class="row mt-5">
+  <div class="row mt-5" >
     <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
-      <div class="row">
-        <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
-      </div>
-      <div class="row user-details">
+     
+      <div class="row user-details " *ngIf="user">
         <div class="col-12">
-          <img src="../../../../assets/check-user.png" class="rounded-circle img-thumbnail" alt="profile">
-          <h5>{{user.name}}</h5>
+          <img [src]="user.photoURL" class="rounded-circle img-thumbnail" alt="profile">
+          <h5>{{user.displayName}}</h5>
           <p>
             {{user.email}}
           </p>
@@ -19,3 +17,15 @@
     </div>
   </div>
 </section>
+<div class="form-group">
+  <h5>Cambiar foto de perfil</h5>
+  <input type="file" accept=".png, .jpg" (change)="onUploead($event)">
+ 
+ 
+</div>
+<div class="progress">
+  <div class="progress-bar pregress-bar-striped bgsuccess" role="progressbar"
+  [style.width]="(uploadPercent|async) +'%'">
+    
+  </div>
+</div>

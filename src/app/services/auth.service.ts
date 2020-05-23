@@ -32,4 +32,19 @@ export class AuthService {
   isAuth(){
     return this.afauth.authState.pipe(map(auth=>auth))
   }
+  updateUserInfo(displayName:string,photoURL:string){
+    this.isAuth().subscribe(user=>{
+      if(user){
+        user.updateProfile({
+          displayName:displayName,
+          photoURL:photoURL
+        }).then(()=>{
+          console.log('User Updated')
+        }).catch(err=>{console.log("No se pudo actualizar el usuario",err)})
+      }
+    }
+
+    )
+
+  }
 }
