@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators'
 import { Observable } from 'rxjs';
+import { UserInterface } from '../../../models/models.interface';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,14 +14,14 @@ export class ProfileComponent implements OnInit {
  
   uploadPercent:Observable<number>;
   urlImage:Observable<string>;
-  user:any;
+  user:UserInterface;
  
   constructor(private authS:AuthService,private afs:AngularFireStorage) { }
 
   ngOnInit() {
     this.authS.isAuth().subscribe(user=>{
       this.user=user;    
-      //console.log("user",this.user)
+      console.log("user",this.user)
     })
     
   }
@@ -33,8 +34,8 @@ export class ProfileComponent implements OnInit {
     const task=this.afs.upload(filePath,file);
     this.uploadPercent=task.percentageChanges();
     task.snapshotChanges().pipe(finalize(()=>{
-       ref.getDownloadURL().subscribe(url=>{
-         this.authS.updateUserInfo(this.user.displayName,url);
+       ref.getDownloadURL().subscribe(photoUrl=>{
+         this.authS.updateUserInfo(this.user.displayName,photoUrl);
        })
      
     })).subscribe();
