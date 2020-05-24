@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataApiService } from '../../services/data-api.service';
 
 @Component({
   selector: 'app-list-posts',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-posts.component.css']
 })
 export class ListPostsComponent implements OnInit {
-
-  constructor() { }
+data:any;
+  constructor(private dataS:DataApiService) {
+    this.dataS.getAllPosts().subscribe(resp=>{
+      this.data=resp
+    })
+  }
 
   ngOnInit() {
   }
