@@ -26,8 +26,16 @@ getAllPosts(){
  }))
 }
 getLastetPosts(){
+ const latest=[];
+ this.getAllPosts().subscribe((posts:PostInterface[])=>{
+   posts.filter(post=>{
+     if(post.fecha==new Date().toISOString().substring(0, 10)){
+       
+     }
+   })
+ })
 
-}
+} 
 getPost(){
 
 }
