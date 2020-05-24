@@ -5,7 +5,9 @@ export interface UserInterface{
   photoURL:string;
 }
 export interface PostInterface{
-  
+  id:string;
+  photoUrl:string;
+  autor:string
   titulo:string;
   contenido:string;
   fecha:string;

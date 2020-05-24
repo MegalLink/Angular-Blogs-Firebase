@@ -1,10 +1,13 @@
-
   <div class="card mt-2">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    <img class="card-img-top" [src]="post.photoUrl" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{post.titulo}}</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <p class="card-text">{{post.contenido}}</p>
+      <p class="card-text text-center">
+        Autor:
+        <span class="badge badge-primary">{{post.autor}}</span>
+        Fecha: <span class="badge badge-primary">{{post.fecha}}</span>
+      </p>
     </div>
   </div>
 
