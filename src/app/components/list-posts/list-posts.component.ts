@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
+import { PostInterface } from '../../models/models.interface';
 
 @Component({
   selector: 'app-list-posts',
@@ -7,10 +8,11 @@ import { DataApiService } from '../../services/data-api.service';
   styleUrls: ['./list-posts.component.css']
 })
 export class ListPostsComponent implements OnInit {
-data:any;
+data:PostInterface[];
   constructor(private dataS:DataApiService) {
-    this.dataS.getAllPosts().subscribe(resp=>{
+    this.dataS.getAllPosts().subscribe((resp:PostInterface[])=>{
       this.data=resp
+      
     })
   }
 

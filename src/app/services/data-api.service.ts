@@ -6,10 +6,10 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DataApiService {
-private postCollection:AngularFirestoreCollection<any>;
-private posts:Observable<any[]>
+private postCollection:AngularFirestoreCollection<PostInterface>;
+private posts:Observable<PostInterface[]>
   constructor(private afs:AngularFirestore) { 
-     this.postCollection = afs.collection<any>('posts');
+     this.postCollection = afs.collection<PostInterface>('posts');
      this.posts= this.postCollection.valueChanges();
   }
 
