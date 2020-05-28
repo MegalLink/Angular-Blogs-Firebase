@@ -6,8 +6,13 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DataApiService {
+//Para toda la coleccion
 private postCollection:AngularFirestoreCollection<PostInterface>;
 private posts:Observable<PostInterface[]>
+//Para un documento
+private postDoc:AngularFirestoreDocument<PostInterface>;
+private post:Observable<PostInterface>;
+
   constructor(private afs:AngularFirestore) { 
      this.postCollection = afs.collection<PostInterface>('posts');
      this.posts= this.postCollection.valueChanges();
@@ -34,10 +39,18 @@ getLastetPosts(){
      }
    })
  })
-
 } 
-getPost(){
-
+getPost(idPost:string){
+this.postDoc=this.afs.doc<PostInterface>(`posts/${idPost}`);
+return this.post=this.postDoc.snapshotChanges().pipe(map(action=>{
+if(action.payload.exists==false){
+  return null;
+}else{
+  const data=action.payload.data() as PostInterface;
+  data.id = action.payload.id;
+  return data;
+}
+}))
 }
 addPost(){
 

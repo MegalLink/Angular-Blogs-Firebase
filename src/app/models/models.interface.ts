@@ -3,6 +3,7 @@ export interface UserInterface{
   displayName:string;
   email:string;
   photoURL:string;
+  isActive?:boolean;
 }
 export interface PostInterface{
   id:string;
