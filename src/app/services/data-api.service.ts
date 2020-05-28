@@ -52,13 +52,17 @@ if(action.payload.exists==false){
 }
 }))
 }
-addPost(){
-
+addPost(post:PostInterface){
+this.postCollection.add(post);
 }
-updatePost(){
-
+updatePost(post:PostInterface){
+let idPost=post.id;
+this.postDoc=this.afs.doc<PostInterface>(`posts/${idPost}`);
+this.postDoc.update(post);
 }
-deletePost(){
+deletePost(idPost){
+  this.postDoc=this.afs.doc<PostInterface>(`posts/${idPost}`);
+  this.postDoc.delete();
 
 }
 

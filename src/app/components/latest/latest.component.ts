@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataApiService } from '../../services/data-api.service';
+import { PostInterface } from '../../models/models.interface';
 @Component({
   selector: 'app-latest',
   templateUrl: './latest.component.html',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestComponent implements OnInit {
 
-  constructor() { }
+ata:PostInterface[];
+  constructor(private dataS:DataApiService) {
+    this.dataS.getAllPosts().subscribe((resp:PostInterface[])=>{
+      this.data=resp
+      
+    })
+  }
 
   ngOnInit() {
   }

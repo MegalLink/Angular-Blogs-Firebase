@@ -30,6 +30,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';//archivos
 // crear las collections
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UsersApiService } from './services/users-api.service';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -47,7 +48,7 @@ var firebaseConfig = {
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ,AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireDatabaseModule,AngularFireAuthModule,AngularFireStorageModule],
-  declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent],
+  declarations: [ AppComponent, NavbarComponent, HomeComponent, HeroComponent, LatestComponent, DetailsPostComponent, ListPostsComponent, LoginComponent, RegisterComponent, Page404Component, ProfileComponent, PostComponent, PostsComponent, ModalComponent],
   bootstrap:    [ AppComponent ],
   providers: [DataApiService, AuthService,AngularFirestore, UsersApiService]
 })
