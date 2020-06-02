@@ -12,7 +12,7 @@ private posts:Observable<PostInterface[]>
 //Para un documento
 private postDoc:AngularFirestoreDocument<PostInterface>;
 private post:Observable<PostInterface>;
-
+public selectPost:PostInterface=null;
   constructor(private afs:AngularFirestore) { 
      this.postCollection = afs.collection<PostInterface>('posts');
      this.posts= this.postCollection.valueChanges();
